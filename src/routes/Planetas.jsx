@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
+import './Geral.css';
+import Logo from '../assets/logo.png';
 
 export default function Planetas() {
    
@@ -18,35 +20,36 @@ export default function Planetas() {
     }, []);
    
     return (
-       <div>
-            <h1>Star Wars</h1>
-            <nav
-            style={{
-                borderBottom: "solid 1px",
-                paddingBottom: "1rem",
-            }}
-            >
-            <Link to="/" >Home</Link> |{" "}
-            <Link to="/filmes">Filmes</Link> |{" "}
-            <Link to="/personagens">Personagens</Link> |{" "}
-            <Link to="/planetas">Planetas</Link> |{" "}
-            <Link to="/especies">Especies</Link> 
-            </nav>
+      <body>
+          <img src={Logo} alt="Star Wars"/>
+          <div className="navbar">
+              <nav>
+              <Link to="/" >Home</Link> |{" "}
+              <Link to="/filmes">Filmes</Link> |{" "}
+              <Link to="/personagens">Personagens</Link> |{" "}
+              <Link to="/planetas">Planetas</Link> |{" "}
+              <Link to="/especies">Especies</Link> 
+              </nav>
+          </div>
 
-            <header>       
-            <h1>Lista de Planetas</h1>
-            {planeta.map((planeta, i) => {
-                return (
-                    <div className="card" key={i}>
-                    <h2>{planeta.name}</h2>
-                    <h3>{planeta.climate}</h3>
-                    <h3>{planeta.diameter}</h3>
-                    <h3>{planeta.gravity}</h3>
-                    <h3>{planeta.population}</h3>
-                </div>
-                )
-            })}
-            </header>
-        </div>
+          <h1>Lista de Planetas</h1>
+
+          <div className="container">       
+              {planeta.map((planeta, i) => {
+                  return (
+                      <div className="card" key={i}>
+                        <h2>{planeta.name}</h2>
+                        <br></br>
+                        <h3>Clima: {planeta.climate}</h3>
+                        <h3>Diametro: {planeta.diameter}</h3>
+                        <h3>Gravidade: {planeta.gravity}</h3>
+                        <h3>População: {planeta.population}</h3>
+                      </div>
+                  )
+              })}
+          </div>
+          
+      </body>
+     
     );
   }
